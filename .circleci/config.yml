@@ -15,7 +15,7 @@ jobs:
       - run: echo "hello"
       - run: 
           name: 
-          command: curl --request GET --url 'https://<< pipeline.parameters.cci-hostname >>/api/v2/project/gh/vjpandian/cci-server4-api-tests/job/$CIRCLE_PREVIOUS_BUILD_NUM' --header 'Circle-Token: $CIRCLE_TOKEN'
+          command: curl --request GET --url 'https://<< pipeline.parameters.cci-hostname >>/api/v2/project/gh/vjpandian/cci-server4-api-tests/job/$CIRCLE_PREVIOUS_BUILD_NUM' --header "Circle-Token: $CIRCLE_TOKEN"
 workflows:
   main:
     jobs:
