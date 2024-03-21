@@ -12,10 +12,10 @@ jobs:
   get-jobs-v2:
     executor: default
     steps:
-      - run: echo "hello"
       - run: 
-          name: 
-          command: curl --request GET --url 'https://<< pipeline.parameters.cci-hostname >>/api/v2/project/gh/vjpandian/cci-server4-api-tests/job/$CIRCLE_PREVIOUS_BUILD_NUM' --header "Circle-Token: $CIRCLE_TOKEN"
+          name: getJobs v2 api call
+          command: |
+              curl --request GET --url 'https://<< pipeline.parameters.cci-hostname >>/api/v2/project/gh/vjpandian/cci-server4-api-tests/job/$CIRCLE_PREVIOUS_BUILD_NUM' --header "Circle-Token: $CIRCLE_TOKEN"
 workflows:
   main:
     jobs:
