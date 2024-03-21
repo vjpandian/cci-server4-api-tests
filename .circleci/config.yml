@@ -9,6 +9,13 @@ executors:
     docker:
       - image: cimg/base:stable
 jobs:
+  get-jobs-v1:
+    executor: default
+    steps:
+      - run: 
+          name: getJob v1
+          command: |
+             curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAM/$CIRCLE_PROJECT_REPONAME/$CIRCLE_PREVIOUS_BUILD_NUM -H "Circle-Token: $CIRCLE_TOKEN"
   get-jobs-v2:
     executor: default
     steps:
