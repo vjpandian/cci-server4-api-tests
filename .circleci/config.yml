@@ -1,5 +1,9 @@
 
 version: 2.1
+parameters:
+  cci-hostname:
+    type: string
+    default: "cci-server-test.eks-dev.sphereci.com"
 executors:
   default:
     docker:
@@ -9,6 +13,13 @@ jobs:
     executor: default
     steps:
       - run: echo "hello"
+      - run: 
+          name: 
+          command: |
+              JOB_NUMBER=$(($CIRCLE_BUILD_NUM - 1))
+              curl --request GET \
+                 --url https://<< pipelines.parameter.cci-hostname >>/api/v2/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/job/$JOB_NUMBER \
+                 --header 'Circle-Token: $CIRCLE_TOKEN'
 workflows:
   main:
     jobs:
