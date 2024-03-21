@@ -1,0 +1,16 @@
+
+version: 2.1
+executor:
+  default:
+    docker:
+      - image: cimg/base:stable
+jobs:
+  get-jobs-v2:
+    executor: default
+    steps:
+      - run: echo "hello"
+workflows:
+  main:
+    jobs:
+      - get-jobs-v2
+    
