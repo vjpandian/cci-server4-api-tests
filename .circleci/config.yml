@@ -9,22 +9,23 @@ executors:
     docker:
       - image: cimg/base:stable
 jobs:
-  get-jobs-v1:
+  get-job-v1:
     executor: default
     steps:
       - run: 
           name: getJob v1
           command: |
              curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAM/$CIRCLE_PROJECT_REPONAME/$CIRCLE_PREVIOUS_BUILD_NUM -H "Circle-Token: $CIRCLE_TOKEN"
-  get-jobs-v2:
+  get-job-v2:
     executor: default
     steps:
       - run: 
-          name: getJobs v2 api call
+          name: getJob v2 api call
           command: |
               curl --request GET --url https://<< pipeline.parameters.cci-hostname >>/api/v2/project/gh/vjpandian/cci-server4-api-tests/job/$CIRCLE_PREVIOUS_BUILD_NUM --header "Circle-Token: $CIRCLE_TOKEN"
 workflows:
   main:
     jobs:
-      - get-jobs-v2
+      - get-job-v1
+      - get-job-v2
     
