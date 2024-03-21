@@ -19,7 +19,7 @@ jobs:
               JOB_NUMBER=$(($CIRCLE_BUILD_NUM - 1))
               echo "Previous job number is $JOB_NUMBER"
               curl --request GET \
-                 --url https://<< pipeline.parameters.cci-hostname >>/api/v2/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/job/$JOB_NUMBER \
+                 --url https://<< pipeline.parameters.cci-hostname >>/api/v2/project/gh/vjpandian/cci-server4-api-tests/job/$JOB_NUMBER \
                  --header 'Circle-Token: $CIRCLE_TOKEN'
 workflows:
   main:
