@@ -32,7 +32,7 @@ jobs:
       - run: 
           name: getJob v1
           command: |
-             curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/10 -H "Circle-Token: $CIRCLE_TOKEN"
+             curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/4 -H "Circle-Token: $CIRCLE_TOKEN"
   get-job-v2:
     executor: default
     steps:
