@@ -30,9 +30,13 @@ jobs:
     executor: default
     steps:
       - run: 
-          name: getJob v1
+          name: getJob v1 for failed build num 7
           command: |
-             curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/17 -H "Circle-Token: $CIRCLE_TOKEN"
+             curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/7 -H "Circle-Token: $CIRCLE_TOKEN"
+      - run: 
+          name: getJob v1 for successful build num 19
+          command: |
+             curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/19 -H "Circle-Token: $CIRCLE_TOKEN"
   get-job-v2:
     executor: default
     steps:
