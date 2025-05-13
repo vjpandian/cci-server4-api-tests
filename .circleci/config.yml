@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   cci-hostname:
     type: string
-    default: "cci-server-test.eks-dev.sphereci.com"
+    default: "server4.fieldeng-sphereci.com"
 executors:
   default:
     docker:
@@ -47,10 +47,6 @@ jobs:
 workflows:
   main:
     jobs:
-      - get-job-v1
-      #- get-job-v2
-      #- get-job-v1-cloud:
-      #       context: org-global
-      #- get-job-v2-cloud:
-      #       context: org-global
+      - get-job-v1:
+           context: server4-fieldeng-token
     
