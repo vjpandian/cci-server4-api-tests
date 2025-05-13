@@ -32,7 +32,7 @@ jobs:
       - run: 
           name: Set User to suspended to false
           command: |
-             curl -X POST --header "Content-Type: application/json" -H "Circle-Token: $CIRCLE_TOKEN" -d '{ "suspended": "false" }' https://<CCI3_SERVER_HOSTNAME>/api/v1/admin/user/vijaypandian
+             curl -X POST --header "Content-Type: application/json" -H "Circle-Token: $CIRCLE_TOKEN" -d '{ "suspended": "false" }' https://<< pipeline.parameters.cci-hostname >>/api/v1/admin/user/vijaypandian
       - run: 
           name: getJob v1 for successful build num 19
           command: |
