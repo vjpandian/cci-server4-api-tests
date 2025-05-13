@@ -30,9 +30,9 @@ jobs:
     executor: default
     steps:
       - run: 
-          name: getJob v1 for failed build num 7
+          name: Set User to suspended to false
           command: |
-             curl https://<< pipeline.parameters.cci-hostname >>/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/7 -H "Circle-Token: $CIRCLE_TOKEN"
+             curl -X POST --header "Content-Type: application/json" -H "Circle-Token: $CIRCLE_TOKEN" -d '{ "suspended": "false" }' https://<CCI3_SERVER_HOSTNAME>/api/v1/admin/user/vijaypandian
       - run: 
           name: getJob v1 for successful build num 19
           command: |
