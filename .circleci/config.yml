@@ -26,13 +26,14 @@ jobs:
           command: |
               curl --request GET --url https://circleci.com/api/v2/project/gh/vjpandian/cci-server4-api-tests/job/4 --header "Circle-Token: $CIRCLE_TOKEN"
               
-  get-job-v1:
+  get-user-admin-v1:
     executor: default
     steps:
       - run: 
           name: Set User to suspended to false
           command: |
-             curl -X POST --header "Content-Type: application/json" -H "Circle-Token: $CIRCLE_TOKEN" -d '{ "suspended": "false" }' https://<< pipeline.parameters.cci-hostname >>/api/v1/admin/user/vijaypandian
+             curl -s -H "Circle-Token: $CIRCLE_TOKEN" https://<<pipeline.parameters.cci-hostname>>/api/v1/admin/users | jq '.[] | select(.login=="samba")'
+
       - run: 
           name: getJob v1 for successful build num 19
           command: |
@@ -47,6 +48,6 @@ jobs:
 workflows:
   main:
     jobs:
-      - get-job-v1:
+      - get-user-admin-v1:
            context: server4-fieldeng-token
     
